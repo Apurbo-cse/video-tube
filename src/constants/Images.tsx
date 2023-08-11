@@ -5,11 +5,11 @@ import unlike from "../assets/unlike.svg";
 
 type ISvgAssets = /*unresolved*/ any
 
-const assets: ISvgAssets = {
+const image: ISvgAssets = {
     logo,
     search,
     like,
     unlike
 };
 
-export default assets;
+export default image;

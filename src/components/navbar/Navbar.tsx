@@ -1,6 +1,7 @@
 import React from 'react'
 import Search from './Search'
-import imgPath from '../../constants/imgPath'
+import image from '../../constants/Images'
+
 
 const Navbar: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Navbar: React.FC = () => {
                 <a href="/">
                     <img
                         className="h-10"
-                        src={imgPath.logo}
+                        src={image.logo}
                         alt="Learn with Sumit"
                     />
                 </a>
@@ -24,7 +25,7 @@ const Navbar: React.FC = () => {
                     <Search/>
                     <img
                         className="inline h-4 cursor-pointer"
-                        src={imgPath.search}
+                        src={image.search}
                         alt="Search"
                     />
                 </div>
