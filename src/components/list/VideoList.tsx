@@ -1,7 +1,7 @@
 import React from 'react'
 import VideoListItem from './VideoListItem'
 
-const VideoList = () => {
+const VideoList: React.FC = () => {
     return (
         <>
             <div
@@ -9,6 +9,7 @@ const VideoList = () => {
             >
                 {/* <!-- single related video --> */}
                <VideoListItem/>
+
             </div>
         </>
     )
