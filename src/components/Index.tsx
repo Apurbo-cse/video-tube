@@ -3,57 +3,9 @@ import React from 'react'
 const Index = () => {
   return (
     <>
-     {/* <!-- navigation --> */}
-        <nav className="bg-slate-100 shadow-md">
-            <div
-                className="max-w-7xl mx-auto px-5 lg:px-0 flex justify-between py-3"
-            >
-                <a href="/">
-                    <img
-                        className="h-10"
-                        src="./assets/lws.svg"
-                        alt="Learn with Sumit"
-                    />
-                </a>
-                <div
-                    className="border border-slate-200 flex items-center bg-white h-10 px-5 rounded-lg text-sm ring-emerald-200"
-                >
-                    {/* <!-- search --> */}
-                    <form>
-                        <input
-                            className="outline-none border-none mr-2"
-                            type="search"
-                            name="search"
-                            placeholder="Search"
-                        />
-                    </form>
-                    <img
-                        className="inline h-4 cursor-pointer"
-                        src="./assets/search.svg"
-                        alt="Search"
-                    />
-                </div>
-            </div>
-        </nav>
+    
 
-        {/* <!-- Tags --> */}
-        <section>
-            <div
-                className="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex gap-2 border-b overflow-y-auto"
-            >
-                <div
-                    className="bg-blue-100 text-blue-600 px-4 py-1 rounded-full cursor-pointer"
-                >
-                    react
-                </div>
-                {/* <!-- selected --> */}
-                <div
-                    className="bg-blue-600 text-white px-4 py-1 rounded-full cursor-pointer"
-                >
-                    redux
-                </div>
-            </div>
-        </section>
+      
 
         {/* <!-- Video Grid --> */}
         <section className="pt-12">
