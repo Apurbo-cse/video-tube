@@ -1,6 +1,6 @@
 import React from "react";
 
-const VideoListItem = () => {
+const VideoListItem: React.FC = () => {
   return (
     <>
       <div className="w-full flex flex-row gap-2 mb-4">
