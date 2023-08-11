@@ -1,7 +1,8 @@
 import React from 'react'
 import Search from './Search'
+import imgPath from '../../constants/imgPath'
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   return (
     <>
      {/* <!-- navigation --> */}
@@ -12,7 +13,7 @@ const Navbar = () => {
                 <a href="/">
                     <img
                         className="h-10"
-                        src="./assets/lws.svg"
+                        src={imgPath.logo}
                         alt="Learn with Sumit"
                     />
                 </a>
@@ -23,7 +24,7 @@ const Navbar = () => {
                     <Search/>
                     <img
                         className="inline h-4 cursor-pointer"
-                        src="./assets/search.svg"
+                        src={imgPath.search}
                         alt="Search"
                     />
                 </div>
