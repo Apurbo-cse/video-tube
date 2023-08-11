@@ -1,4 +1,5 @@
 import React from 'react'
+import VideoListItem from './VideoListItem'
 
 const VideoList = () => {
     return (
@@ -7,7 +8,7 @@ const VideoList = () => {
                 className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto"
             >
                 {/* <!-- single related video --> */}
-               
+               <VideoListItem/>
             </div>
         </>
     )
