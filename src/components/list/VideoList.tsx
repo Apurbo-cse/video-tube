@@ -1,20 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import VideoListItem from './VideoListItem'
-interface Video {
-    tags: any;
-    currId: any
-  }
-const VideoList: React.FC<Video> = ({ }) => {
-    return (
-        <>
-            <div
-                className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto"
-            >
-               <VideoListItem />
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRelatedVideos } from '../../features/videos/relatedVideoSlice';
 
-            </div>
-        </>
-    )
+interface VideoProps {
+    tags: string[]; // I'm assuming tags is an array of strings. Adjust accordingly if not.
+    currId: string;     // Adjust type if needed.
 }
 
-export default VideoList
+const VideoList: React.FC<VideoProps> = ({ tags, currId }) => {
+    const dispatch = useDispatch();
+    const {} = useSelector()
+
+    useEffect(() => {
+        dispatch(fetchRelatedVideos({ tags, id: currId }))
+    }, [dispatch, tags, id]);
+
+    return (
+        <>
+            <div className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto">
+               <VideoListItem />
+            </div>
+        </>
+    );
+}
+
+export default VideoList;
