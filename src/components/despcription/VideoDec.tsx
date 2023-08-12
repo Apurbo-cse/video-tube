@@ -17,7 +17,7 @@ const VideoDec: React.FC<Video> = ({video}) => {
             Uploaded on {date}
           </h2>
 
-          <LikeUnLike/>
+          <LikeUnLike video={video}/>
         </div>
 
         <div className="mt-4 text-sm text-[#334155] dark:text-slate-400">
