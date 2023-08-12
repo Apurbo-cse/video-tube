@@ -10,7 +10,6 @@ const VideoList: React.FC<Video> = ({ }) => {
             <div
                 className="col-span-full lg:col-auto max-h-[570px] overflow-y-auto"
             >
-                {/* <!-- single related video --> */}
                <VideoListItem />
 
             </div>
