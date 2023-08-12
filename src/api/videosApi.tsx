@@ -10,8 +10,12 @@ export const getVideoDetails = async (id: string) => {
     return response.data;
 }
 
+type VideoParams = {
+    tags?: string[];
+    id: string;
+};
 
-export const getRelatedVideos = async (id: string, tags: string[]) => {
+export const getRelatedVideos = async ({ tags, id }: VideoParams): Promise<any[]> => {
     const limit = 5;
     let queryString = tags && tags.length > 0 
         ? tags.map((tag: string) => `tags_like=${tag}`).join('&') 
