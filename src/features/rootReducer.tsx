@@ -1,10 +1,12 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import videoReducer  from './videos/videoSlice';
+import videosReducer  from './videos/videoSlice';
 import tagReducer from './tags/tagSlice';
+import videoReducer from './videos/videoDetailSlice';
 
 const rootReducer = combineReducers({
-  videos: videoReducer,
-  tags: tagReducer
+  videos: videosReducer,
+  tags: tagReducer,
+  videoDetails: videoReducer
 });
 
 
