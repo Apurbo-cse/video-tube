@@ -7,11 +7,11 @@ import VideoListItem from "./VideoListItem";
 import { RootState } from '../../features/rootReducer';
 
 interface RelatedVideoListProps {
-    currId: string;
+    id: string;
     tags: string[];
 }
 
-const RelatedVideoList: React.FC<RelatedVideoListProps> = ({ currId, tags }) => {
+const RelatedVideoList: React.FC<RelatedVideoListProps> = ({ id, tags }) => {
     const dispatch = useDispatch();
     
     const { relatedVideos, isLoading, isError, error } = useSelector(
@@ -19,8 +19,8 @@ const RelatedVideoList: React.FC<RelatedVideoListProps> = ({ currId, tags }) => 
     );
 
     useEffect(() => {
-       dispatch(fetchRelatedVideos({ id: currId, tags }) as any);
-    }, [dispatch, currId, tags]);
+       dispatch(fetchRelatedVideos({ id, tags }) as any);
+    }, [dispatch, id, tags]);
 
     let content;
     if (isLoading) content = <Loading />;

@@ -39,7 +39,7 @@ const Video: React.FC = () => {
           <Player link={link} title={title} />
           <VideoDec video={video} />
         </div>
-        <VideoList currId={id} tags={tags} />
+        <VideoList id={id} tags={tags} />
       </div>
     );
   }

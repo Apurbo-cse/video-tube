@@ -31,7 +31,6 @@ export const fetchRelatedVideos = createAsyncThunk<Video[], FetchRelatedVideosIn
   "relatedVideos/fetchRelatedVideos",
   async ({ tags, id }) => {
     const relatedVideos = await getRelatedVideos({id,  tags });
-    console.log('id ::>> ', id, ',', 'Tag ::', tags);
     return relatedVideos;
   }
 
