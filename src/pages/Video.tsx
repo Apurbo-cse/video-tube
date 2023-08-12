@@ -43,9 +43,6 @@ const Video: React.FC = () => {
     );
   }
 
-  console.log('videoId', videoId);
-  console.log('video :>> ', video);
-
   return (
     <section className="pt-6 pb-20">
       <div className="mx-auto max-w-7xl px-2 pb-20 min-h-[400px]">
