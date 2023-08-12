@@ -19,10 +19,13 @@ const initialState: VideosState = {
 };
 
 // async thunk
-export const fetchVideos = createAsyncThunk<Video[], void, { rejectValue: { errorMessage: string } }>('videos/fetchVideos', async () => {
-  const videos = await getVideos();
-  return videos;
-});
+export const fetchVideos = createAsyncThunk<Video[], { tags: string[], search: string }, { rejectValue: { errorMessage: string } }>(
+  'videos/fetchVideos',
+  async ({ tags, search }) => {
+      const videos = await getVideos(tags, search);
+      return videos;
+  }
+);
 
 const videoSlice = createSlice({
   name: "videos",
