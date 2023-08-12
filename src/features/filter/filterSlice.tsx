@@ -1,15 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-type Video = /*unresolved*/ any
-
 // Define the state type
-type VideosState = {
-    tags: Video[];
+type Tag = {
+    tags: string[];
     search: string;
 };
 
-const initialState: VideosState = {
+const initialState: Tag = {
     tags: [],
     search: "",
 };
