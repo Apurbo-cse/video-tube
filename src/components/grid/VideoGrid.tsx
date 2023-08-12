@@ -14,11 +14,11 @@ const VideoGrid: React.FC = () => {
     error = null
   } = useSelector((state: any) => state.videos || {});
 
-  const relatedVideoState = useSelector((state: any) => state.relatedVideos);
+  const { tags, search } = useSelector((state: any) => state.filter)
 
   useEffect(() => {
-    dispatch(fetchVideos() as any); // Assuming you've handled typings elsewhere
-  }, [dispatch]);
+    dispatch(fetchVideos({tags, search}) as any); 
+  }, [dispatch,tags, search]);
   
   // Decide what to render
   let content;
