@@ -6,23 +6,29 @@ type Video = /*unresolved*/ any
 
 // Define the state type
 type VideosState = {
-  videos: Video[];
+  relatedvideos: Video[];
   isLoading: boolean;
   isError: boolean;
   error: string;
 };
 
 const initialState: VideosState = {
-  videos: [],
+  relatedvideos: [],
   isLoading: false,
   isError: false,
   error: ""
 };
 
 // async thunk
-export const fetchRelatedVideos = createAsyncThunk<Video[], void, { rejectValue: { errorMessage: string } }>('videos/fetchRelatedVideo', async () => {
-  const videos = await getRelatedVideos();
-  return videos;
+export const fetchRelatedVideos = createAsyncThunk<Video[], {tags?: string[]; id: string}, { rejectValue: { errorMessage: string } }>('videos/fetchRelatedVideos',
+  async ({tags, id}, thunkAPI) => {
+    try {
+      const videos = await getRelatedVideos({tags, id});
+      return videos;
+    } catch (error: any) {
+      // Return a rejected value with a structured error to be handled by extraReducers.
+      return thunkAPI.rejectWithValue({ errorMessage: error.message });
+    }
 });
 
 const relatedVideoSlice = createSlice({
@@ -31,17 +37,17 @@ const relatedVideoSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchRelatedVideo.pending, (state) => {
+      .addCase(fetchRelatedVideos.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
       })
-      .addCase(fetchRelatedVideo.fulfilled, (state, action: PayloadAction<Video[]>) => {
+      .addCase(fetchRelatedVideos.fulfilled, (state, action: PayloadAction<Video[]>) => {
         state.isLoading = false;
-        state.videos = action.payload;
+        state.relatedvideos = action.payload;
       })
-      .addCase(fetchRelatedVideo.rejected, (state, action) => {
+      .addCase(fetchRelatedVideos.rejected, (state, action) => {
         state.isLoading = false;
-        state.videos =[];
+        state.relatedvideos =[];
         state.isError = true;
         state.error = action.error?.message || "An unknown error occurred";
       });
