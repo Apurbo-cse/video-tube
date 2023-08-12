@@ -19,7 +19,7 @@ const VideoGrid: React.FC = () => {
   useEffect(() => {
     dispatch(fetchVideos() as any); // Assuming you've handled typings elsewhere
   }, [dispatch]);
-  console.log('++++++',relatedVideoState);
+  
   // Decide what to render
   let content;
   if (isLoading) {

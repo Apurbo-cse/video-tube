@@ -27,7 +27,7 @@ const Video: React.FC = () => {
   if (isLoading) {
     content = <Loading />;
   } else if (isError) {
-    content = <div className="col-span-12"> {error}</div>;
+    content = <div className="col-span-12">{error}</div>;
   } else if (video?.length === 0) {
     content = <div className="col-span-12">No video found</div>;
   } else if (video) {

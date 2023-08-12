@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   videos: videosReducer,
   tags: tagReducer,
   videoDetails: videoReducer,
-  relatedVideo: relatedReducer  // Notice that the key is `relatedVideo`
+  relatedVideo: relatedReducer 
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

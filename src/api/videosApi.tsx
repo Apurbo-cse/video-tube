@@ -16,14 +16,12 @@ type VideoParams = {
 };
 
 export const getRelatedVideos = async ({ tags, id }: VideoParams): Promise<any[]> => {
+    
     const limit = 5;
     const tagQueries = (tags || []).map(tag => `tags_like=${tag}`);
     const baseQuery = `id_ne=${id}&_limit=${limit}`;
     const queryString = tagQueries.length > 0 ? `${tagQueries.join('&')}&${baseQuery}` : baseQuery;
     const response = await axios.get(`/videos?${queryString}`);
-    
-    console.log('id :>> ', id);
-    console.log('queryString :>> ', queryString);
 
     return response.data;
 };

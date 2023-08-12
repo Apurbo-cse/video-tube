@@ -21,7 +21,6 @@ const VideoGridItem: React.FC<Video> = ({ video = {} }) => {
                 alt="Some video title"
               />
             </Link>
-            {description}
             <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
               {duration}
             </p>
