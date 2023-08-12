@@ -7,7 +7,7 @@ type Tag = /*unresolved*/ any
 // Define the state type
 type TagsState = {
   tags: Tag[];
-  isLoading: boolean;
+  isLoading: boolean; 
   isError: boolean;
   error: string;
 };
