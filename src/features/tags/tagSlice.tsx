@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { getTags } from "../../api/tagsAPI";
 
-
 type Tag = /*unresolved*/ any
 
 // Define the state type
