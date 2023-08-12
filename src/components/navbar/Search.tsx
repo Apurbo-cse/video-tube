@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { searched } from '../../features/filter/filterSlice';
+import { useMatch, useNavigate } from 'react-router-dom';
 
 const Search: React.FC = () => {
 
@@ -8,10 +9,17 @@ const Search: React.FC = () => {
     const {search} = useSelector((state: any) => state.filter);
 
     const [input, setInput] = useState<any>(search);
+    const match = useMatch('/')
+    const navigate =useNavigate()
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        dispatch(searched(input))
+        dispatch(searched(input));
+        
+        // if user is not in home page, redirect to home page
+        if(!match){
+            navigate('/')
+        }
     }
 
     return (
