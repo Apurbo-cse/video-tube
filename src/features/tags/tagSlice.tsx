@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { getTags } from "../../api/tagsAPI";
 
 
 type Tag = /*unresolved*/ any
@@ -20,7 +21,7 @@ const initialState: TagsState = {
 
 // async thunk
 export const fetchTags = createAsyncThunk<Tag[], void, { rejectValue: { errorMessage: string } }>('tags/fetchTags', async () => {
-  const tags = await ;
+  const tags = await getTags();
   return tags;
 });
 
