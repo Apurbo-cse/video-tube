@@ -1,38 +1,44 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { getRelatedVideos } from "../../api/videosApi";
 
+type Video = {
+  id: string;
+  title: string;
+  description: string;
+  tags: string[];
+};
 
-type Video = /*unresolved*/ any
+type FetchRelatedVideosInput = {
+  tags: string[];
+  id: string;
+};
 
-// Define the state type
 type VideosState = {
-  relatedvideos: Video[];
+  relatedVideos: Video[];
   isLoading: boolean;
   isError: boolean;
   error: string;
 };
 
 const initialState: VideosState = {
-  relatedvideos: [],
+  relatedVideos: [],
   isLoading: false,
   isError: false,
   error: ""
 };
 
-// async thunk
-export const fetchRelatedVideos = createAsyncThunk<Video[], {tags?: string[]; id: string}, { rejectValue: { errorMessage: string } }>('videos/fetchRelatedVideos',
-  async ({tags, id}, thunkAPI) => {
-    try {
-      const videos = await getRelatedVideos({tags, id});
-      return videos;
-    } catch (error: any) {
-      // Return a rejected value with a structured error to be handled by extraReducers.
-      return thunkAPI.rejectWithValue({ errorMessage: error.message });
-    }
-});
+export const fetchRelatedVideos = createAsyncThunk<Video[], FetchRelatedVideosInput>(
+  "relatedVideos/fetchRelatedVideos",
+  async ({ tags, id }) => {
+    const relatedVideos = await getRelatedVideos({id,  tags });
+    console.log('id ::>> ', id, ',', 'Tag ::', tags);
+    return relatedVideos;
+  }
+
+);
 
 const relatedVideoSlice = createSlice({
-  name: "videos",
+  name: "relatedVideos",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -43,11 +49,11 @@ const relatedVideoSlice = createSlice({
       })
       .addCase(fetchRelatedVideos.fulfilled, (state, action: PayloadAction<Video[]>) => {
         state.isLoading = false;
-        state.relatedvideos = action.payload;
+        state.relatedVideos = action.payload;
       })
       .addCase(fetchRelatedVideos.rejected, (state, action) => {
         state.isLoading = false;
-        state.relatedvideos =[];
+        state.relatedVideos = [];
         state.isError = true;
         state.error = action.error?.message || "An unknown error occurred";
       });

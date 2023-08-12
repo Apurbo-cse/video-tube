@@ -32,6 +32,7 @@ const Video: React.FC = () => {
     content = <div className="col-span-12">No video found</div>;
   } else if (video) {
     const { id, link, tags, title } = video;
+    
     content = (
       <div className="grid grid-cols-3 gap-2 lg:gap-8">
         <div className="col-span-full w-full space-y-8 lg:col-span-2">

@@ -6,35 +6,39 @@ import Loading from "../ui/Loading";
 
 const VideoGrid: React.FC = () => {
   const dispatch = useDispatch();
-  const { videos, isLoading, isError, error } = useSelector((state: any) => state.videos);
+  
+  const {
+    videos = [],
+    isLoading = false,
+    isError = false,
+    error = null
+  } = useSelector((state: any) => state.videos || {});
+
+  const relatedVideoState = useSelector((state: any) => state.relatedVideos);
 
   useEffect(() => {
-    dispatch(fetchVideos() as any); // Using type casting. Ideally, type your dispatch instead.
+    dispatch(fetchVideos() as any); // Assuming you've handled typings elsewhere
   }, [dispatch]);
-
-  // decide what to render
+  console.log('++++++',relatedVideoState);
+  // Decide what to render
   let content;
   if (isLoading) {
     content = <Loading />;
-  } else if (isError) {
+  } else if (isError && error) { // Checking if error exists to display it
     content = <div className="col-span-12"> {error}</div>;
-  } else if (videos?.length === 0) {
+  } else if (videos.length === 0) { // Removed optional chaining since we've default value
     content = <div className="col-span-12">No videos found</div>;
-  } else if (videos?.length > 0) {
-    content = videos.map((video: any) =><VideoGridItem  key={video} video={video}/>);
+  } else {
+    content = videos.map((video: any) => <VideoGridItem key={video.id} video={video} />); // Using video.id as key if available
   }
 
   return (
-    <>
-      {/* <!-- Video Grid --> */}
-      <section className="pt-12">
-        <section className="pt-12">
-          <div className="grid grid-cols-12 gap-4 max-w-7xl mx-auto px-5 lg:px-0 min-h-[300px]">
-            {content}
-          </div>
-        </section>
-      </section>
-    </>
+    // Removed redundant nested sections
+    <section className="pt-12">
+      <div className="grid grid-cols-12 gap-4 max-w-7xl mx-auto px-5 lg:px-0 min-h-[300px]">
+        {content}
+      </div>
+    </section>
   );
 };
 
